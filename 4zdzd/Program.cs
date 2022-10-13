@@ -8,8 +8,41 @@ using System.Threading.Tasks;
 
 namespace _4zdzd
 {
+    enum Uroven
+    {
+        добрый = 1,
+        норм = 2,
+        злой = 3,
+        воплащение_человеческой_злости_накопившейся_за_тысячелетия_существования_нашей_цивилизации = 4,
+    }
+    struct Ded
+    {
+        public string name;
+        public Uroven lvl;
+        public string[] frasi;
+        public short sinki;
+        public Ded(string Name,Uroven Lvl, string[] Frasi, short Siniki)//ffffffffffffffffffffffffffffзачем это нужно
+        {
+            this.name = Name;//Зачем это нужно, почему работает без вис, зачем зис, почему он а не я 
+            this.lvl = Lvl;
+            this.frasi = Frasi;
+            this.sinki = Siniki;
+        }
+
+    }
     internal class Program
     {
+        static short Zad6(Ded ded, params string[] array)//зачем писать деддед 
+        {
+            foreach (string i in ded.frasi)
+            {
+                if (array.Contains(i))
+                {
+                    ded.sinki += 1;
+                }
+            }
+            return ded.sinki;
+        }
         static int zadanie(params int[] aray)
         {
             int Sum = 0;
@@ -202,7 +235,25 @@ namespace _4zdzd
             Console.WriteLine($"Sorted array: {string.Join(", ", sortedArray)}");
 
             Console.ReadLine();
-            
+
+
+            string[] d1 = { "проституки!", "гады" };
+            Ded ded1 = new Ded("Толян Сидоровичыч", (Uroven)1, d1, 0);
+            string[] d2 = { "проститутки!", "развратники", "гандон" };
+            Ded ded2 = new Ded("Азат Залялетдинов", (Uroven)2, d2, 0);
+            string[] d3 = { "проституки!", "гады", "сын бляди!", "уроды", "черти позорные" };
+            Ded ded3 = new Ded("Дмитрий Тумач", (Uroven)3, d3, 0);
+            string[] d4 = { "проституки!", "хорошая работа олег", "сын бляди!", "уроды", "СЫНОК ТЫ ГРЁБАНЫЙ" };
+            Ded ded4 = new Ded("Илья Романов", (Uroven)1, d4, 0);
+            string[] d5 = { "проституки!", "любовь моя недосягаема" };
+            Ded ded5 = new Ded("Степан Борисов", (Uroven)4, d5, 0);
+            string[] slova = { "проституки!", "гады", "отлично", "водка", "пиво", "самогон", "михалыч", "сын бляди!", "уроды", "черти позорные", "СЫНОК ТЫ ГРЁБАНЫЙ" };
+
+            Console.WriteLine("количество синяков от бабки: " + Zad6(ded1, slova));
+            Console.WriteLine("количество синяков от бабки: " + Zad6(ded2, slova));
+            Console.WriteLine("количество синяков от бабки: " + Zad6(ded3, slova));
+            Console.WriteLine("количество синяков от бабки: " + Zad6(ded4, slova));
+            Console.WriteLine("количество синяков от бабки: " + Zad6(ded5, slova));
 
             Console.ReadKey();
         }
